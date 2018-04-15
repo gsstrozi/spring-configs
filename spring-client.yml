@@ -6,14 +6,8 @@ eureka:
   instance:
     hostname: localhost
     port: 9091
-    leaseRenewalIntervalInSeconds: 1
-    leaseExpirationDurationInSeconds: 3
   client:
+    registerWithEureka: true
+    fetchRegistry: false
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/      
-# custom logging settings
-logging:
-  level:
-      - ".=all"
-      - "com.memorynotfound=debug"
-      - "org.springframework=all"
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
