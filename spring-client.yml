@@ -1,14 +1,18 @@
 server:
-  port: 9099
+  port: 9092
 
+# configure eureka client
 eureka:
   instance:
-    hostname: localhost
-    port: 9091
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 3
   client:
-    registerWithEureka: true
-    fetchRegistry: false
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
-  server:
-    wait-time-in-ms-when-sync-empty: 3000
+      defaultZone: http://user:password@localhost:8091/eureka/
+
+# custom logging settings
+logging:
+  level:
+      - ".=info"
+      - "com.memorynotfound=debug"
+      - "org.springframework=info"
