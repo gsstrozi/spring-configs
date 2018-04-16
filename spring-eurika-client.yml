@@ -4,15 +4,10 @@ server:
 # configure eureka client
 eureka:
   instance:
-    leaseRenewalIntervalInSeconds: 1
-    leaseExpirationDurationInSeconds: 3
+    hostname: localhost
+    port: 9091
   client:
+    registerWithEureka: true
+    fetchRegistry: false
     serviceUrl:
-      defaultZone: http://user:password@localhost:8091/eureka/
-
-# custom logging settings
-logging:
-  level:
-      - ".=info"
-      - "com.memorynotfound=debug"
-      - "org.springframework=info"
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
